@@ -11,3 +11,13 @@ class Solution:
                     return [i, j]
         return [] # Trả về mảng rỗng nếu không tìm thấy cặp phần tử nào thỏa mãn yêu cầu
         
+# Better solution using a dictionary:
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]: # Sử dụng từ điển để lưu trữ các phần tử đã duyệt
+        seen = {} # Tạo một từ điển rỗng để lưu trữ các phần tử đã duyệt
+        for i, num in enumerate(nums): # Duyệt từng phần tử trong mảng cùng với chỉ số của nó
+            kek = target - num # Tính toán phần tử cần tìm để đạt được target
+            if kek in seen: # Kiểm tra nếu phần tử cần tìm đã được duyệt
+                return [seen[kek], i] # Trả về chỉ số của hai phần tử
+            seen[num] = i # Lưu trữ phần tử hiện tại vào từ điển với chỉ số của nó
+        return [] # Trả về mảng rỗng nếu không tìm thấy cặp phần tử nào thỏa
